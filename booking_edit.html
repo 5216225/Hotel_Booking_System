@@ -1,0 +1,37 @@
+{% extends "adminlayout.html" %}
+{% block body %}
+  <div class="row" style="text-align:center; margin-top:100px"><h3><b>Updating Booking Details</b></h3></div>
+  <div class="row">
+    <div class="col-md-4" style="transform:translate(100%,5%);">
+      <div class="card card-body">
+        <form action="/bookingupdate/{{booking.idBooking}}" method="POST">
+          <div class="form-group">
+            
+            <label>Check-in:</label>
+            <input type="date" class="form-control" name="Checkin" value="{{booking.checkinDate}}" min="1980-01-01" onchange="setenddate()" required>
+          </div>
+          <div class="form-group">
+            <label>Check-out:</label>
+            <input type="date" class="form-control" name="Checkout" value="{{booking.checkoutDate}}" min="1980-01-01" required>
+          </div>
+          <div class="form-group">
+            <label>Accomodation ID:</label>
+            <input type="text" name="accomodationid" value="{{booking.idAccomodation}}" placeholder="1 to 45..." class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Hotel Guests:</label>
+            <input type="text" name="numofguests" value="{{booking.noOfGuests}}" placeholder="How many guests?" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Hotel Fare:</label>
+            <input type="text" name="fare" value="{{booking.totFare}}" placeholder="Fare..." class="form-control" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Update Details</button>
+            <a type="submit" class="btn btn-primary btn-block" href="/viewallbookings">Go Back</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

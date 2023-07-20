@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block body %}
+<head>
+  <link rel="stylesheet" href="/static/form.css">
+  <title> Register </title>
+</head>
+
+<div class="login-wrap">
+  <h2>Registration</h2>
+  
+  <form class="form" action="{{url_for('reg')}}" method='POST'>
+    <input type="text" placeholder="Username..." name="uname" required/>
+    <input type="email" placeholder="E-mail..." name="email" required/>
+    <input type="password" placeholder="Password..." name="upass" required/>
+    <button type="submit" value="Log in">Register</button>
+  </div>
+</div>
+{% endblock %}

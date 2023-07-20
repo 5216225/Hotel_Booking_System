@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Horizon Hotels</title>
+    <!---Stylesheets-->
+    <link rel="stylesheet" href="/static/navbar.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!---Javascripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+		  <h3 style="margin-left: 10px;">
+        <b> Horizon Hotels </b>
+      </h3>
+      <ul class="main-nav">
+        {% if session.username %}
+        <a class="nav-link" href="/logout">Logout</a>
+        <a class="nav-link" href="/adminhome">Profile</a>
+        {% else %}
+        <a class="nav-link" href="/">Home</a>             
+        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link" href="/admin">Admin Login</a>
+        <a class="nav-link" href="/reg">Registration</a>
+        {% endif %}
+      </ul>
+	  </header> 
+      
+    <div class='container mt-4'>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      {% block body %}
+      {% endblock %}
+    </div>  
+
+    <script>
+      const btnDelete= document.querySelectorAll('.btn-delete');
+      if(btnDelete) {
+        const btnArray = Array.from(btnDelete);
+        btnArray.forEach((btn) => {
+          btn.addEventListener('click', (e) => {
+            if(!confirm('Are you sure you want to delete it?')){
+              e.preventDefault();
+            }
+          });
+        })
+      }
+    $(document).ready(function() {
+        $('#example').DataTable({     
+          "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+            "iDisplayLength": 3
+           } 
+        );
+    } );     
+    </script>
+
+  </body>
+</html>

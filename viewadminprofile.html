@@ -1,0 +1,11 @@
+{% extends 'adminlayout.html' %}
+{% block body %}
+<h3 class='jumbotron'>
+   <p>Welcome : {{session.username}}</p>
+   <p>E-mail : {{session.mail}}</p>
+   {% if session.username %}
+   <a class="btn btn-info add-new" style="float: right;" href="/adminhome">Go Back</a>
+   {% else %}
+   {% endif %}
+</h3>
+{% endblock %}

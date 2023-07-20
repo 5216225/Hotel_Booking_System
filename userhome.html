@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h3 class='jumbotron'>Welcome : {{session.username}}
+  {% if session.username %}
+  <a type="button" class="btn btn-info add-new" style="float: right; margin: 5px;" href="/viewuserprofile">View User Profile</a>
+  <a type="button" class="btn btn-info add-new" style="float: right; margin: 5px;" href="/viewuserbookings">View Bookings</a>
+  {% else %}
+  {% endif %}
+</h3>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<head>
+  <title>Booking Start</title>
+  <link rel="stylesheet" href="/static/showusers.css">
+  <link rel="stylesheet" href="/static/paymentform.css">
+</head>
+
+  <form action="/booking_confirm/" method="POST"> 
+    <table class="table" id = "selecteddata" style="margin-bottom: 10px; margin-top:20px;">
+      <tr>
+        <th>Selected City</th>
+        <th>Check-in Date</th> 
+        <th>Check-out Date</th> 
+        <th>Num of Adults</th> 
+        <th>Num of Children</th> 
+        <th>Num of Nights</th> 
+        <th>Currency</th> 
+      </tr>
+      <tr>
+        <td>{{lookupdata[0]}}</td>
+        <input type="hidden" name="acccity" id="acccity" value="{{lookupdata[0]}}"/>
+        <td>{{lookupdata[1]}}</td>
+        <input type="hidden" name="checkindate" id="checkindate" value="{{lookupdata[1]}}"/>
+        <td>{{lookupdata[2]}}</td>
+        <input type="hidden" name="checkoutdate" id="checkoutdate" value="{{lookupdata[2]}}"/>
+        <td>{{lookupdata[3]}}</td>
+        <input type="hidden" name="noofadults" id="noofadults" value="{{lookupdata[3]}}"/>
+        <td>{{lookupdata[4]}}</td>
+        <input type="hidden" name="noofchildren" id="noofchildren" value="{{lookupdata[4]}}"/>
+        <td>{{lookupdata[5]}}</td>
+        <input type="hidden" name="noofnights" id="noofnights" value="{{lookupdata[5]}}"/>
+        <td>{{lookupdata[6]}}</td>
+        <input type="hidden" name="fare" id="fare" value="{{lookupdata[6]}}"/>
+      </tr>
+    </table>  
+    <table class="table" id = "bookingstart"> 
+      <tr>
+        <th> Standard Fare Per Person </th>
+        <th> Smoking / No-smoking </th>  
+        <th> Accomodation Features </th> 
+        <th> Estimated fare </th>
+        <th> Room Type</th>
+        <th> Select option </th>
+      </tr>        
+    {% for row in resultset %}
+      <tr> 
+        <td> £{{row[1]}} </td> 
+        <td> {{row[2]}} </td> 
+        <td> {{row[3]}} </td>              
+        <td> {{row[7]}}</td>             
+        <td> {{row[6]}} </td>              
+        <td> <input type="radio" name="bookingchoice" value="{{row[0]}}" checked></td>                       
+      </tr>        
+    {% endfor %} 
+    </table>  
+    <div class="form-wrap">
+      <form>
+    
+        <div class="guests"><label for="guests">Full name on card:</label>
+          <input type="text" name="cardname" id="cardname" placeholder="John M. Doe" required/> 
+        </div>
+
+        <div class="guests"><label for="guests">Card Number:</label>
+          <input type="text" name="cardnumber" id="cardnumber" max="9999999999999999" placeholder="4444 4444 4444 4444" size="16" required/> 
+        </div>
+    
+        <div class="dates">
+          <div class="arrival">
+            <label for="arrival">CVV</label><br/>
+            <input type="text" name="cvv" id="cvv" max="999" size="3" placeholder="222" required/>
+          </div>
+          <div class="departure">
+            <label for="arrival">Card Expiry</label><br/>
+            <input type="date" name="cardexpiry" id="cardexpiry" max="9999" size="4" placeholder="1111" required />
+          </div>
+        </div>
+    
+        <input class="btn" type="submit" value="Confirm Booking and Payment"/>
+    </div>
+  </form>
+{% endblock %}

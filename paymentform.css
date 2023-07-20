@@ -1,0 +1,83 @@
+body{
+  background-image: linear-gradient(to right, #eac1ff, #dfc9ff, #d7d0ff, #d1d6ff, #cedbff);
+}
+
+input{
+  width:15%;
+  padding: 15px 10px;
+  margin: 3px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #96a4e7;
+}
+ label {
+	 padding-bottom: 10px;
+	 display: inline;
+	 float: center;
+}
+
+ .form-wrap {
+	 position: absolute;
+	 text-align: center;
+	 top: 85%;
+	 left: 50%;
+	 transform: translate(-50%, -35%);
+	 font-size: 1em;
+	 width: 350px;
+}
+ @media (max-width: 450px) {
+	 .form-wrap {
+		 width: 80%;
+	}
+}
+
+ input {
+	 padding: 15px 10px;
+	 margin-bottom: 20px;
+	 border-radius: 10px;
+	 width: 100%;
+	 height: 45px;
+}
+ input[type=date]::-webkit-inner-spin-button {
+	 -webkit-appearance: none;
+	 display: none;
+}
+ #guestNo {
+	 width: 80px;
+	 margin: 0 20px;
+	 text-align: center;
+}
+ input[type="date"]:webkit-inner-spin-button {
+	 display: none;
+}
+ label {
+	 padding-bottom: 10px;
+	 display: inline;
+	 float: left;
+}
+
+ .dates .arrival {
+	 float: left;
+	 width: 45%;
+}
+ .dates .departure {
+	 float: right;
+	 width: 45%;
+}
+ .btn {
+	 border: none;
+	 padding: 10px;
+	 margin: 20px auto;
+	 width: 100%;
+	 height: 45px;
+	 display: block;
+	 background: #fea88d;
+	 color: #fff;
+	 font-size: 14px;
+	 letter-spacing: 0.1em;
+	 box-shadow: 1px 3px 20px rgba(17, 17, 17, .1);
+	 border-radius: 3px;
+	 outline: none;
+}
+ .btn:hover {background: #fe9574;}
+ 

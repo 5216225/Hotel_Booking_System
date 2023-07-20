@@ -1,0 +1,27 @@
+{% extends "adminlayout.html" %}
+{% block body %}
+  <div class="row" style="text-align:center; margin-top:100px"><h3><b>Updating Credentials</b></h3></div>
+  <div class="row">
+    <div class="col-md-4" style="transform:translate(100%,5%);">
+      <div class="card card-body">
+        <form action="/update/{{user.id}}" method="POST">
+          <div class="form-group">
+            <label>Username:</label>
+            <input type="text" name="name" value="{{user.name}}" placeholder="Name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>E-mail:</label>
+            <input type="text" name="email" value="{{user.email}}" placeholder="E-mail" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Password:</label>
+            <input type="text" name="password" value="{{user.password}}" placeholder="Password" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Update Details</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{%extends 'layout.html'%}
+{% block body %}
+<head>
+  <link rel="stylesheet" href="/static/showusers.css">
+</head>
+
+<form action="/dumpsVar/" method="POST">
+
+  <input type="hidden" name="totalfare" value="{{resultset[5]}}" /> 
+  <input type="hidden" name="bookingid" value="{{resultset[10]}}" />   
+                 
+  <table class="table" id = "bookingconfirmation"> 
+    
+    <tr>
+      <th> Booking ID </th>
+      <th> City </th>  
+      <th> Address </th> 
+      <th> Check-in </th> 
+      <th> Check-out </th>
+      <th> Num of nights</th>
+      <th> Num of Adults</th>
+      <th> Num of Children</th>
+      <th> Other Features</th>
+      <th> Smoking Allowed?</th>
+      <th> Total Fare</th>
+      <th> Payment</th>
+    </tr>
+    <tr> 
+      <td>{{resultset[11]}}</td>   
+      <td>{{resultset[1]}}</td>             
+      <td>{{resultset[7]}}</td>   
+      <td>{{resultset[2]}}</td>   
+      <td>{{resultset[3]}}</td>   
+      <td>{{resultset[10]}}</td>   
+      <td>{{resultset[4]}}</td>   
+      <td>{{resultset[5]}}</td> 
+      <td>{{resultset[9]}}</td>   
+      <td>{{resultset[8]}}</td>   
+      <td>£{{resultset[6]}}</td> 
+      <td>Card ending with ******{{cardnumber}} </td>  
+    </tr>         
+  </table>  
+  <input class="button-blue" type="submit" style="margin-left:50%" value="Submit" /> 
+</form>
+{% endblock %}

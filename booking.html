@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<head>
+  <link rel="stylesheet" href="/static/booking.css">
+  <link rel="stylesheet" href="/static/navbar.css">
+</head>
+
+<div class="diamond2"></div>
+<div class="form-wrap">
+  <form action="/selectBooking" method="POST">
+
+    <div class="location"><label for="location">Select Destination City:</label>
+      <select type="text" name="accCitylist">
+        {% for city in accCitylist %}
+          <option value="{{city}}">{{city}}</option>	    
+        {% endfor %} 
+      </select>      
+    </div>
+
+    <div class="dates">
+      <div class="arrival">
+        <label for="arrival">Number of Adults:</label>
+        <select type="number" name="noofadults" id="noofguests" min=1 required>
+          <option>1</option>	    
+          <option>2</option>	    
+          <option>3</option>	    
+          <option>4</option>	    
+          <option>5</option>	  
+        </select>   
+      </div>
+
+      <div class="departure">
+        <label for="arrival">Number of Children:</label>
+        <select type="number" name="noofchildren" id="noofguests" min=1 required>
+          <option>1</option>	    
+          <option>2</option>	    
+          <option>3</option>	    
+          <option>4</option>	    
+          <option>5</option>	  
+        </select>   
+      </div>
+    </div>
+
+    <div class="dates">
+      <div class="arrival">
+        <label for="arrival">Check-in</label>
+        <input type="date" name="checkindate" id="checkindate" min="1980-01-01" onchange="setenddate()" required>
+      </div>
+
+      <div class="departure">
+        <label for="arrival">Check-out</label>
+        <input type="date" name="checkoutdate" id="checkoutdate" min="1980-01-01" required>
+      </div>
+    </div>
+
+    <div class="departure">
+      <label for="arrival">Currency:</label>
+      <select type="number" name="fare" id="fare" min=1 required>
+        <option>EUR (Euros)</option>	    
+        <option>GBP (British Pounds Sterling)</option>	    
+        <option>USD (United States Dollar)</option>	    
+      </select>   
+    </div>
+
+    <input class="btn" type="submit" value="Proceed to see accomodation options"/>
+    <a class="btn" type="submit" style="margin-top: 15px;" href="/userhome">Go Back</a>
+  </form>
+</div>  
+
+<script>
+  window.onload = function initialdate(){
+    var today=new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth() + 1;
+    var day = today.getDate();           
+    if (month < 10) {month = '0' + month;}
+    if (day < 10) {day = '0' + day;}
+    today = year + '-' + month + '-' + day;           
+    document.getElementById("checkindate").min = today;            
+  }
+
+  function setenddate(){
+    var selectedstartdate = document.getElementById("checkindate").value;
+    document.getElementById("checkoutdate").min = selectedstartdate;
+  }
+</script>
+
+{% endblock %}  

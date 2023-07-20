@@ -1,0 +1,13 @@
+{% extends "adminlayout.html" %}
+{% block body %}
+<h3 class='jumbotron'>Welcome : {{session.username}}
+  {% if session.username %}
+  <a class="btn btn-info add-new" style="float: right; margin: 5px;" href="/viewadminprofile">View Profile</a>
+  <a class="btn btn-info add-new" style="float: right; margin: 5px;" href="/displayhotels">Display Hotels</a>
+  <a class="btn btn-info add-new" style="float: right; margin: 5px;" href="/users">Users</a>
+  <a class="btn btn-info add-new" style="float: right; margin: 5px;" href="/viewallbookings">View Bookings</a>
+  <a class="btn btn-info add-new" style="float: right; margin: 5px;" href="/generateadminreport">Generate Reports</a>
+  {% else %}
+  {% endif %}
+</h3>
+{% endblock %}
